@@ -50,84 +50,84 @@ class _InputPageState extends State<InputPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('BMI CALCULATOR'),
-        ),
-        body: Column(
-          children: [
-            Expanded(
-              child: Row(
-                children: [
-                  Expanded(
-                    child: GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          print(' male was pressed');
-                          selectedGender = Gender.male;
-                        });
-                      },
-                      child: ResuableCard(
-                        colour: selectedGender == Gender.male
-                            ? activeCardColor
-                            : inActiveCardColor,
-                        cardChild: IconContent(
-                          iconData: FontAwesomeIcons.mars,
-                          label: 'MALE',
-                        ),
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                      child: GestureDetector(
-                    onTap: () {
+      appBar: AppBar(
+        title: Text('BMI CALCULATOR'),
+      ),
+      body: Column(
+        children: [
+          Expanded(
+            child: Row(
+              children: [
+                Expanded(
+                  child: ResuableCard(
+                    onPress: () {
                       setState(() {
-                        selectedGender = Gender.female;
-                        print(' female was pressed');
+                        print(' male was pressed');
+                        selectedGender = Gender.male;
                       });
                     },
-                    child: ResuableCard(
-                      colour: selectedGender == Gender.female
-                          ? activeCardColor
-                          : inActiveCardColor,
-                      cardChild: IconContent(
-                        iconData: FontAwesomeIcons.venus,
-                        label: 'FEMALE',
-                      ),
+                    colour: selectedGender == Gender.male
+                        ? activeCardColor
+                        : inActiveCardColor,
+                    cardChild: IconContent(
+                      iconData: FontAwesomeIcons.mars,
+                      label: 'MALE',
                     ),
-                  )),
-                ],
-              ),
+                  ),
+                ),
+                Expanded(
+                    child: ResuableCard(
+                  onPress: () {
+                    setState(() {
+                      selectedGender = Gender.female;
+                      print(' female was pressed');
+                    });
+                  },
+                  colour: selectedGender == Gender.female
+                      ? activeCardColor
+                      : inActiveCardColor,
+                  cardChild: IconContent(
+                    iconData: FontAwesomeIcons.venus,
+                    label: 'FEMALE',
+                  ),
+                )),
+              ],
             ),
-            Expanded(
-                child: ResuableCard(
-              colour: activeCardColor,
-            )),
-            Expanded(
-              child: Row(
-                children: [
-                  Expanded(
-                      child: GestureDetector(
-                    onTap: () {
-                      print('male was selected');
-                    },
-                    child: ResuableCard(
-                      colour: activeCardColor,
-                    ),
-                  )),
-                  Expanded(
-                      child: ResuableCard(
+          ),
+          Expanded(
+              child: ResuableCard(
+            colour: activeCardColor,
+            cardChild: Column(
+              children: [Text('HEIGHT')],
+            ),
+          )),
+          Expanded(
+            child: Row(
+              children: [
+                Expanded(
+                    child: GestureDetector(
+                  onTap: () {
+                    print('male was selected');
+                  },
+                  child: ResuableCard(
                     colour: activeCardColor,
-                  )),
-                ],
-              ),
+                  ),
+                )),
+                Expanded(
+                    child: ResuableCard(
+                  colour: activeCardColor,
+                )),
+              ],
             ),
-            Container(
-              color: bottomContainerColor,
-              margin: EdgeInsets.only(top: 10.0),
-              width: double.infinity,
-              height: bottomContainierHeight,
-            )
-          ],
-        ));
+          ),
+          Container(
+            color: bottomContainerColor,
+            margin: EdgeInsets.only(top: 10.0),
+            width: double.infinity,
+            height: bottomContainierHeight,
+          )
+        ],
+      ),
+    );
   }
 }
