@@ -1,3 +1,5 @@
+import 'package:bmi_calculator/Widgets/bottom_button.dart';
+import 'package:bmi_calculator/Widgets/rounded_icon_button.dart';
 import 'package:flutter/material.dart';
 import 'package:bmi_calculator/Widgets/icon_content.dart';
 import 'package:bmi_calculator/Widgets/reusable_card.dart';
@@ -227,41 +229,14 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          GestureDetector(
+          BottomButton(
+            buttonTittle: 'CALCULATE',
             onTap: () {
               Navigator.pushNamed(context, 'first');
             },
-            child: Container(
-              child: Text(
-                'CALCULATE',
-              ),
-              color: kbottomContainerColor,
-              margin: EdgeInsets.only(top: 10.0),
-              width: double.infinity,
-              height: kbottomContainierHeight,
-            ),
           )
         ],
       ),
-    );
-  }
-}
-
-class RoundIconButton extends StatelessWidget {
-  RoundIconButton({this.icon, @required this.onPressed});
-
-  final IconData icon;
-  final Function onPressed;
-
-  @override
-  Widget build(BuildContext context) {
-    return RawMaterialButton(
-      child: Icon(icon),
-      shape: CircleBorder(),
-      elevation: 0.0,
-      constraints: BoxConstraints.tightFor(width: 56.0, height: 56.0),
-      onPressed: onPressed,
-      fillColor: Color(0xFF4C4f5E),
     );
   }
 }
