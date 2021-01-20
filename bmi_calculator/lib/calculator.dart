@@ -15,7 +15,7 @@ class CalculatorBrain {
   String getResult() {
     if (_bmi >= 25) {
       return 'OverWeight';
-    } else if (_bmi <= 18.5) {
+    } else if (_bmi < 18.5) {
       return 'Normal';
     } else {
       return 'UnderWeight';
@@ -25,7 +25,7 @@ class CalculatorBrain {
   String getInterpretation() {
     if (_bmi >= 25) {
       return 'You have a higher than normal body weight .try to exercise more';
-    } else if (_bmi <= 18.5) {
+    } else if (_bmi < 18.5) {
       return 'You have a normal body weight .Good Job !!';
     } else {
       return 'You have a Lower than normal body weight .You Can eat a bit more';
