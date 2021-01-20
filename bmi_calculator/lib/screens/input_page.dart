@@ -1,5 +1,7 @@
 import 'package:bmi_calculator/Widgets/bottom_button.dart';
 import 'package:bmi_calculator/Widgets/rounded_icon_button.dart';
+import 'package:bmi_calculator/calculator.dart';
+import 'package:bmi_calculator/screens/results.dart';
 import 'package:flutter/material.dart';
 import 'package:bmi_calculator/Widgets/icon_content.dart';
 import 'package:bmi_calculator/Widgets/reusable_card.dart';
@@ -19,8 +21,8 @@ class InputPage extends StatefulWidget {
 class _InputPageState extends State<InputPage> {
   Gender selectedGender;
   int height = 180;
-  int weight = 70;
-  int age = 1;
+  int weight = 80;
+  int age = 18;
 
 //   Color maleCardColour = inActiveCardColor;
 //   Color femaleCardColour = inActiveCardColor;
@@ -232,7 +234,27 @@ class _InputPageState extends State<InputPage> {
           BottomButton(
             buttonTittle: 'CALCULATE',
             onTap: () {
-              Navigator.pushNamed(context, 'first');
+              CalculatorBrain calculatorBrain =
+                  CalculatorBrain(height: height, weight: weight);
+
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ResultPage(
+                    bmiResult: calculatorBrain.calculateBmi(),
+                    resultText: calculatorBrain.getResult(),
+                    interpretation: calculatorBrain.getInterpretation(),
+                  ),
+                ),
+              );
+
+              // Navigator.pushNamed(
+              //   context,
+              //   'first',
+              //   arguments:bmiResult: calculatorBrain.calculateBmi(),
+              // resultText: calculatorBrain.getResult(),
+              // interpretation: calculatorBrain.getInterpretation(),
+              // );
             },
           )
         ],
