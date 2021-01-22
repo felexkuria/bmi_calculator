@@ -236,14 +236,15 @@ class _InputPageState extends State<InputPage> {
             onTap: () {
               CalculatorBrain calculatorBrain =
                   CalculatorBrain(height: height, weight: weight);
+              String bmi = calculatorBrain.calculateBmi();
 
               Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => ResultPage(
                     bmiResult: calculatorBrain.calculateBmi(),
-                    resultText: calculatorBrain.getResult(),
-                    interpretation: calculatorBrain.getInterpretation(),
+                    resultText: calculatorBrain.getResult(bmi),
+                    interpretation: calculatorBrain.getInterpretation(bmi),
                   ),
                 ),
               );
